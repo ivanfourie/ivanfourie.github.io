@@ -1,107 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>ivan.africa</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            background: white;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ivan.africa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&family=Arizonia&display=swap" rel="stylesheet">
 
-        canvas {
-            display: block;
-        }
-    </style>
-</head>
-
-<body>
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-        }
+  <style>
+    :root {
+      --bg-color: #061a13;
+      --text-color: #b6ffa7;
+      --accent-color: #7fff90;
+      --font-display: 'Playfair Display', serif;
     }
-  </script>
-    <script type="module">
-        import * as THREE from 'three'
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-        import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-        import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
 
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xffffff); // White background
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.set(0, 2, 10);
+    html, body {
+      height: 100%;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+    }
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        document.body.appendChild(renderer.domElement);
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url('images/ivan-punt-afrika.png') no-repeat center center;
+      background-size: 50%;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.enableZoom = false;
-        controls.autoRotate = false;
+    .hero h1 {
+      font-family: 'Arizonia', cursive;
+        font-size: 4rem;
+      color: var(--text-color);
+      text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
 
-        // Soft lights
-        scene.add(new THREE.AmbientLight(0xffffff, 0.8));
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-        directionalLight.position.set(5, 10, 7.5);
-        scene.add(directionalLight);
+    .content {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-        let mesh;
+    .content h2 {
+        font-family: 'Arizonia', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent-color);
+    }
 
-        const loader = new FontLoader();
-        loader.load('https://threejs.org/examples/fonts/gentilis_regular.typeface.json', (font) => {
-            const geometry = new TextGeometry('ivan.africa', {
-                font: font,
-                size: 1,
-                height: 0.1,
-                curveSegments: 12,
-                bevelEnabled: true,
-                bevelThickness: 0.02,
-                bevelSize: 0.02,
-                bevelSegments: 3,
-            });
+    .content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
 
-            geometry.center();
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    
+  </section>
 
-            const material = new THREE.MeshStandardMaterial({
-                color: 0xFF0000,
-                roughness: 0.7,
-                metalness: 0.1
-            });
+  <section class="content">
+    <h2>
+      'n Kosmiese saad onder Suidelike sterre
+    </h2>
+    <p>
+      Welkom by 'n digitale heiligdom, geïnspireer deur maanlig, sterrestelsels en die magie van Tafelberg. Hier wortel ons in Afrika, groei ons met nuuskierigheid, en bloei ons met doelgerigtheid. Hierdie ruimte vier wysheid, verbondenheid, kreatiwiteit en innerlike krag — 'n plek vir insig, avontuur en betekenisvolle verbinding.
+    </p>
+  </section>
 
-            mesh = new THREE.Mesh(geometry, material);
-            scene.add(mesh);
-
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // if (mesh) {
-            //     mesh.rotation.y += 0.0001;
-            //     mesh.rotation.x += 0.0001;
-            //     mesh.rotation.z += 0.0001;
-            // }
-            controls.update();
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+  <footer>
+    &copy; 2025 ivan.africa — Alle regte voorbehou.
+  </footer>
 </body>
-
 </html>
