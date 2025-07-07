@@ -32,28 +32,38 @@
 
     .hero {
       position: relative;
-      height: 100vh;
-      background: url('images/ivan-punt-afrika.png') no-repeat center center;
-      background-size: 50%;
-      background-attachment: fixed;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      height: 100vh;
+      background-color: var(--bg-color);
+      overflow: hidden;
     }
 
-    /* On small screens */
-    @media (max-width: 768px), (max-height: 500px) {
-        .hero {
-            height: 100vh;
-            background-size: contain;
-            background-position: top center;
-            aspect-ratio: 9 / 16;
-        }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        height: 100vh;
+      }
+
+      .hero img {
+        object-fit: contain;
+      }
+
+      .content {
+        padding: 5px 20px;
+      }
     }
 
     .hero h1 {
       font-family: 'Arizonia', cursive;
-        font-size: 4rem;
+      font-size: 4rem;
       color: var(--text-color);
       text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.8);
       padding: 20px;
@@ -69,7 +79,7 @@
     }
 
     .content h2 {
-        font-family: 'Arizonia', cursive;
+      font-family: 'Arizonia', cursive;
       font-size: 2.5rem;
       margin-bottom: 20px;
       color: var(--accent-color);
@@ -90,7 +100,7 @@
 </head>
 <body>
   <section class="hero">
-    
+    <img src="images/ivan-punt-afrika.png" alt="ivan.africa logo" />
   </section>
 
   <section class="content">
