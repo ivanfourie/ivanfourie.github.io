@@ -41,6 +41,16 @@
       justify-content: center;
     }
 
+    /* On small screens */
+    @media (max-width: 768px), (max-height: 500px) {
+        .hero {
+            height: 100vh;
+            background-size: contain;
+            background-position: top center;
+            aspect-ratio: 9 / 16;
+        }
+    }
+
     .hero h1 {
       font-family: 'Arizonia', cursive;
         font-size: 4rem;
