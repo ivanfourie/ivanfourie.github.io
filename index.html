@@ -85,11 +85,11 @@
         function animate() {
             requestAnimationFrame(animate);
 
-            if (mesh) {
-                mesh.rotation.y += 0.0001;
-                mesh.rotation.x += 0.0001;
-                mesh.rotation.z += 0.0001;
-            }
+            // if (mesh) {
+            //     mesh.rotation.y += 0.0001;
+            //     mesh.rotation.x += 0.0001;
+            //     mesh.rotation.z += 0.0001;
+            // }
             controls.update();
             renderer.render(scene, camera);
         }
